@@ -10,7 +10,7 @@
 ###### `eureka-server注册中心`，
 ###### `admin服务监控`，
 ###### `gateway网关`，
-###### `ws-service-1/ws-service-2（模拟多节点）`
+###### `ws-service-1/ws-service-2`
 
 ### 测试
 ######  测试客户端网页版，访问链接：http://localhost:8777/push-service/
