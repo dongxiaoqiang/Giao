@@ -12,9 +12,11 @@
 ###### `gateway网关`，
 ###### `ws-service-1/ws-service-2（模拟多节点）`
 
-######  测试客户端网页版，网关访问链接：http://localhost:8777/push-service/
+### 测试
+######  测试客户端网页版，访问链接：http://localhost:8777/push-service/
 
-######  通过网关访问websocket服务的链接为`ws://localhost:8777/ws-service/websocket`
+######  网关访问websocket链接为：ws://localhost:8777/ws-service/websocket
 
 ### 服务监控
 ###### 地址：http://localhost:8090/
+###### 账号：admin，密码：admin
