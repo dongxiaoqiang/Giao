@@ -7,10 +7,10 @@
 ###### 基本原理：将netty服务实现的websocket注册到eureka上，由网关统一维护连接并转发；
 
 ### 依次启动
-###### `eureka-server`，
-###### `admin`，
-###### `gateway`，
-###### `ws-service-1/ws-service-2（模拟多机器节点）`
+###### `eureka-server注册中心`，
+###### `admin服务监控`，
+###### `gateway网关`，
+###### `ws-service-1/ws-service-2（模拟多节点）`
 
 ######  测试客户端网页版，网关访问链接：http://localhost:8777/push-service/
 
