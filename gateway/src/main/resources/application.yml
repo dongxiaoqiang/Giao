@@ -1,0 +1,32 @@
+server:
+  port: 8777
+
+spring:
+  sleuth:
+    traceId128: true
+    sampler:
+      probability: 1.0
+  profiles:
+    active: dev
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lowerCaseServiceId: true
+  application:
+    name: gateway-limiter
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS

@@ -1,0 +1,20 @@
+server:
+  port: 8802
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+spring:
+  application:
+    name: push-service
+
+netty-websocket:
+  discovery:
+    client:
+      name: ws-service
+      host: 127.0.0.1
+      port: 8803
+      path: /websocket
+

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>WebSocket</title>
+    <script src="./js/sockjs.min.js"></script>
+    <script src="./js/stomp.js"></script>
+    <script src="./js/jquery-3.1.1.js"></script>
+</head>
+<body>
+<noscript><h2 style="color:#ff0000">抱歉,您的浏览器不支持该功能!</h2></noscript>
+<div>
+    <div>
+        <button id="connect" onclick="connect();">连接</button>
+        <button id="disconnect" disabled="disabled" onclick="disconnect();">断开连接</button>
+    </div>
+    <div id="conversationDiv">
+        <label>请输入您发送的消息</label><input type="text" id="chatContent"/>
+        <br>
+        <button id="sendMessage" onclick="sendMessage();">发送</button>
+        <br>
+        <textarea id="response" style="width: 100%;height: 800px"></textarea>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    var ws;
+
+    function setConnected(connected) {
+        document.getElementById('connect').disabled = connected;
+        document.getElementById('disconnect').disabled = !connected;
+        document.getElementById('conversationDiv').style.visibility = connected ? 'visible' : 'hidden';
+        $("#response").html();
+    }
+
+    function connect() {
+        var roomId = $('#roomId').val();
+        ws = new WebSocket('ws://localhost:8777/ws-service/websocket'); // 网关地址
+        ws.onopen = WSonOpen;
+        ws.onmessage = WSonMessage;
+        ws.onclose = WSonClose;
+        ws.onerror = WSonError;
+    }
+
+    function WSonOpen() {
+        var message = {
+            name: 'Server',
+            chatContent: '成功连接'
+        }
+        setConnected(true);
+        showResponse(message)
+    };
+
+    function WSonMessage(event) {
+        if (event.data == "KeepLive") {
+            ws.send("OK, KeepLive！");
+        } else if (event.data.indexOf("来自服务器推送") != -1) {
+            ws.send("OK, 奔驰的小野马！");
+        }
+        var message = {
+            name: 'Server',
+            chatContent: event.data
+        }
+        showResponse(message)
+    };
+
+    function WSonClose() {
+        var message = {
+            name: 'Server',
+            chatContent: '已断开'
+        }
+        showResponse(message)
+    };
+
+    function WSonError() {
+        var message = {
+            name: 'Server',
+            chatContent: '连接错误！'
+        }
+        showResponse(message)
+    };
+
+    function disconnect() {
+        ws.close()
+        setConnected(false);
+        console.log("Disconnected");
+    }
+
+    function sendMessage() {
+        var chatContent = $("#chatContent").val();
+        ws.send(JSON.stringify({'chatContent': chatContent}))
+    }
+
+    function showResponse(message) {
+        var response = $("#response").val();
+        $("#response").val(response + ': ' + message.chatContent + '\n');
+    }
+</script>
+</html>
