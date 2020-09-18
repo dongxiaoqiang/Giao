@@ -6,8 +6,6 @@ spring:
     traceId128: true
     sampler:
       probability: 1.0
-  profiles:
-    active: dev
   cloud:
     gateway:
       discovery:

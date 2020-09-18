@@ -17,4 +17,11 @@ netty-websocket:
       host: 127.0.0.1
       port: 8803
       path: /websocket
-
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS

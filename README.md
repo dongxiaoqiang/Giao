@@ -19,3 +19,5 @@
 
 ###### `ws-service`底层为netty实现，在启动`ws-service`应用时，同时也启动了配置的netty websocket服务，路径为`/websocket`，websocket应用注册到`eureka-server`的名称为`ws-service`，那么通过网关访问websocket服务的链接为`ws://localhost:8777/ws-service/websocket`
 
+### 监控
+###### http://localhost:8090/
