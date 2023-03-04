@@ -14,10 +14,15 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @Slf4j
 @RestController
-public class TestController {
+public class TestFeignController {
     @Autowired
     private TestFeignImpl testFeignImpl;
 
+    /**
+     * feign实现需要提供http api入口
+     *
+     * @return
+     */
     @GetMapping("/testFeign")
     public String testFeign() {
         return testFeignImpl.testFeign();

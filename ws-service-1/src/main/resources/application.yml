@@ -1,5 +1,5 @@
 server:
-  port: 8800
+  port: 8881
 
 eureka:
   client:
@@ -25,3 +25,22 @@ management:
   endpoint:
     health:
       show-details: ALWAYS
+
+feign:
+  hystrix:
+    enabled: true
+  okhttp:
+    enabled: true
+  client:
+    config:
+      feign-server-b:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: full
+  compression:
+    request:
+      enabled: true
+      mime-types: text/xml,application/xml,application/json
+      min-request-size: 2048
+    response:
+      enabled: true

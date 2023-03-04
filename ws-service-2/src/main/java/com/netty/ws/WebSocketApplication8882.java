@@ -3,11 +3,13 @@ package com.netty.ws;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
+@EnableFeignClients(basePackages = "com.demo.feign.api")
 @SpringBootApplication
 @EnableDiscoveryClient
-public class WebSocketApplication8802 {
-  public static void main(String[] args) {
-    SpringApplication.run(WebSocketApplication8802.class, args);
-  }
+public class WebSocketApplication8882 {
+    public static void main(String[] args) {
+        SpringApplication.run(WebSocketApplication8882.class, args);
+    }
 }

@@ -1,11 +1,14 @@
-package com.demo.feign.feign;
+package com.demo.feign.api;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 
-@FeignClient(name = "TEST-FEIGN")
+/**
+ * 拆分client包对外提供即可
+ */
+@FeignClient(name = "test-feign")
 public interface TestFeign {
 
-    @GetMapping("testFeign")
+    @GetMapping("/testFeign")
     String testFeign();
 }
